@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Lab3.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Lab3.scala" afterDir="false" />
+    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Lab2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Lab3.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Lab1.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Main1.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/RandomNumberGenerator.scala" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Scala Lab 1" />
+      <module name="ScalaLabs" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,8 +113,16 @@
       <workItem from="1696338681641" duration="4879000" />
       <workItem from="1696540520335" duration="1802000" />
       <workItem from="1696543793015" duration="590000" />
-      <workItem from="1696615623398" duration="1939000" />
+      <workItem from="1696615623398" duration="2593000" />
     </task>
+    <task id="LOCAL-00001" summary="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
+      <created>1696621516371</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696621516373</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +130,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant." />
+    <option name="LAST_COMMIT_MESSAGE" value="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
