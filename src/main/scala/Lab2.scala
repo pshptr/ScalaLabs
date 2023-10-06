@@ -1,4 +1,4 @@
-object Main22 { // foldLeft
+object Main122 { // foldLeft
 
 
   def main(args: Array[String]): Unit = {
@@ -10,7 +10,7 @@ object Main22 { // foldLeft
   }
 }
 
-object Main23 { // zip
+object Main123 { // zip
   def main(args: Array[String]): Unit = {
     val a = List(1, 2, 3)
     val b = List("one", "two", "three")
@@ -26,7 +26,7 @@ object Main23 { // zip
 
 }
 
-object Main24 { // head and tail
+object Main124 { // head and tail
 //  def sumList(lst: List[Int]): Int = {
 //    if (lst.isEmpty) 0
 //    else lst.head*lst.head + sumList(lst.tail)
