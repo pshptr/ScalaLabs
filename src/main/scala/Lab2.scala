@@ -1,8 +1,58 @@
+object Main22 { // foldLeft
+
+
+  def main(args: Array[String]): Unit = {
+    val myList = List(1, 2, 3, 4, 5)
+    val sum = myList.foldLeft(0)((ac_c, x) => ac_c + x)
+    println(sum) // Output: 15
+
+
+  }
+}
+
+object Main23 { // zip
+  def main(args: Array[String]): Unit = {
+    val a = List(1, 2, 3)
+    val b = List("one", "two", "three")
+    val zipped = a.zip(b) // List((1, "one"), (2, "two"), (3, "three"))
+    println(zipped)
+    val filteredList = zipped.filter { case (a, _) => a == 1 }
+    println(filteredList)
+    val tup=filteredList.head
+    println(tup)
+    val secondItem = tup._2
+    println(secondItem)
+  }
+
+}
+
+object Main24 { // head and tail
+//  def sumList(lst: List[Int]): Int = {
+//    if (lst.isEmpty) 0
+//    else lst.head*lst.head + sumList(lst.tail)
+//  }
+val numbers = List(1, 2, 3, 4, 5)
+//  val first = numbers.head // 1
+//  val rest = numbers.tail // List(2, 3, 4, 5)
+val reversed = numbers.reverse // List(5, 4, 3, 2, 1)
+
+
+
+  def main(args: Array[String]): Unit = {
+    val myList = List(1, 2, 3, 4, 5)
+//    val sumw = sumList(myList)
+//    println(numbers.head)
+//    println(numbers.tail
+    println(numbers.reverse)
+  }
+}
+
+
 object Main {
   def sumOfNegatives(list: List[Int]): Int = { // Эта функция рекурсивно суммирует отрицательные элементы в списке.
-                                              // Рекурсия происходит на строках, где вызывается sumOfNegatives(tail),
-                                              // где tail - это оставшаяся часть списка. Рекурсия продолжается,
-                                              // пока не будет достигнут базовый случай, когда список Nil (пустой).
+    // Рекурсия происходит на строках, где вызывается sumOfNegatives(tail),
+    // где tail - это оставшаяся часть списка. Рекурсия продолжается,
+    // пока не будет достигнут базовый случай, когда список Nil (пустой).
 
     if (list.isEmpty) {
       0
@@ -13,18 +63,18 @@ object Main {
     }
 
 
-//    list match {
-//      case Nil => 0
-//      case head :: tail if head < 0 => head + sumOfNegatives(tail)
-//      case _ :: tail => sumOfNegatives(tail)
-//    }
+    //    list match {
+    //      case Nil => 0
+    //      case head :: tail if head < 0 => head + sumOfNegatives(tail)
+    //      case _ :: tail => sumOfNegatives(tail)
+    //    }
   }
 
   def sumOfLastThree(list: List[Int]): Int = { // не рекурс // Эта функция рекурсивно суммирует последние три
-                                              // элемента списка. Рекурсия также происходит на строках,
-                                              //  где вызывается sumOfLastThree(tail), где tail - это оставшаяся
-                                              //  часть списка. Базовый случай достигается, когда длина списка
-                                              //  меньше или равна 3.
+    // элемента списка. Рекурсия также происходит на строках,
+    //  где вызывается sumOfLastThree(tail), где tail - это оставшаяся
+    //  часть списка. Базовый случай достигается, когда длина списка
+    //  меньше или равна 3.
     if (list.isEmpty) {
       0
     } else if (list.length <= 3) {
@@ -33,11 +83,11 @@ object Main {
       sumOfLastThree(list.tail)
     }
 
-//    list match {
-//      case Nil => 0
-//      case _ if list.length <= 3 => list.sum
-//      case _ :: tail => sumOfLastThree(tail)
-//    }
+    //    list match {
+    //      case Nil => 0
+    //      case _ if list.length <= 3 => list.sum
+    //      case _ :: tail => sumOfLastThree(tail)
+    //    }
   }
 
   def indexiesOfMax(list: List[Int]): List[Int] = {
@@ -100,3 +150,5 @@ object Main {
     println("Has three equal: " + hasThreeEqual(list4)) // Has three equal: None
   }
 }
+
+
