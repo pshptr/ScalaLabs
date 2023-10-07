@@ -37,6 +37,15 @@ object TextProcessingApp {
     val text8 = "Hello to everybody"
     val insertedText = insertWords(text8, "with heartness", 1)
     println("8. Текст с вставленными словами: " + insertedText.mkString(" "))
+
+    val text9 = "Additional task"
+    val tripledText =  tripleSymbol(text9)
+    println("9. Текст с утроенными символами: " + tripledText)
+
+    val text10 = "Additional task 2"
+    val removedSpaceText = removeSpace(text10)
+    println("10. Текст с удалёнными пробелами: " + removedSpaceText)
+
   }
 
 //  def replaceLatinWithRussian(text: String): String = { // no
@@ -118,6 +127,15 @@ object TextProcessingApp {
 //    println("Vowels count: " + matches.size)
   }
 
+  def tripleSymbol(text: String): String = {
+    val regex: Regex = """t""".r
+    /*val tripledText: String =*/ regex.replaceAllIn(text, "ttt")
+  }
+
+  def removeSpace(text: String): String = {
+    var regex: Regex = """ """.r
+    /*val removedSpaceText: String =*/ regex.replaceAllIn(text, "")
+  }
 
 }
 
