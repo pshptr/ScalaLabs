@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="changed project structure, structured better">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Lab3.scala" afterDir="false" />
+    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added 3rd lab tasks code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Lab2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Lab2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Lab3.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Lab3.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,8 @@
       <workItem from="1696338681641" duration="4879000" />
       <workItem from="1696540520335" duration="1802000" />
       <workItem from="1696543793015" duration="590000" />
-      <workItem from="1696615623398" duration="3545000" />
+      <workItem from="1696615623398" duration="3918000" />
+      <workItem from="1696664216479" duration="1351000" />
     </task>
     <task id="LOCAL-00001" summary="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
       <created>1696621516371</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696623290249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added 3rd lab tasks code">
+      <created>1696625032981</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696625032981</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +152,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant." />
     <MESSAGE value="changed project structure, structured better" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed project structure, structured better" />
+    <MESSAGE value="added 3rd lab tasks code" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 3rd lab tasks code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
