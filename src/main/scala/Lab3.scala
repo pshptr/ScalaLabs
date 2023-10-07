@@ -47,25 +47,10 @@ object TextProcessingApp {
     println("10. Текст с удалёнными пробелами: " + removedSpaceText)
 
   }
-
-//  def replaceLatinWithRussian(text: String): String = { // no
-//    val replacementMap = Map(
-//      'H' -> 'Н', 'e' -> 'е', 'l' -> 'l', 'o' -> 'о',
-//      't' -> 'т', 'o' -> 'о', ' ' -> ' ', 'e' -> 'е',
-//      'v' -> 'v', 'r' -> 'г', 'y' -> 'у', 'b' -> 'ь',
-//      'd' -> 'd', 'y' -> 'у'
-//    )
-//    text.map(char => replacementMap.getOrElse(char, char))
-//  }
     def replaceLatinWithRussian(text: String): String = {
-//      val text: String = "Hello to everybody"
-//      println("Source: " + text)
       val regex: Regex = """[a-zA-Z]""".r
-      /*val newText: String = */regex.replaceAllIn(text, { c => (c.toString + 32).toString })
-//      return(newText)
-//      println("Result: " + newText)
+      regex.replaceAllIn(text, { c => (c.toString + 32).toString })
 }
-
 
   def findWordsStartingWithExt(text: String): List[String] = {
     val extWordsRegex = "\\bext\\w*".r
@@ -84,57 +69,35 @@ object TextProcessingApp {
     text.replaceAll("[aeiouAEIOU]", "")
   }
 
-//  def doubleEachLetter(text: String): String = { // no
-//    text.flatMap(char => s"$char$char")
-//  }
   def doubleEachLetter(text: String): String = {
-//    var text: String = "Hello to everybody"
-//    println("Source: " + text)
-    val regex: Regex = """\w""".r
-    /*val newText: String =*/ regex.replaceAllIn(text, { m => m.group(0) + m.group(0) })
-//    return newText
-//    println("Result: " + newText)
+  val regex: Regex = """\w""".r
+   regex.replaceAllIn(text, { m => m.group(0) + m.group(0) })
   }
-
 
   def removeLetterY(text: String): String = {
     text.replaceAll("y", "")
   }
 
-//  def insertWords(text: String, wordsToInsert: String, position: Int): String = { // no
-//    val words = text.split(' ')
-//    if (position >= 0 && position <= words.length) {
-//      val (before, after) = words.splitAt(position)
-//      (before :+ wordsToInsert).mkString(" ") + " " + after.mkString(" ")
-//    } else {
-//      text // Return original text if position is invalid
-//    }
-//  }
-
   def insertWords(text: String, wordsToInsert: String, position: Int): String = {
     val text: String = "Hello to everybody"
     println("Source: " + text)
     val regex: Regex = """\bto\b""".r
-    /*var newText: String =*/ regex.replaceAllIn(text, "with heartness to")
-//    println("Result: " + newText)
+    regex.replaceAllIn(text, "with heartness to")
   }
 
   def vowelsCount(text: String): Int = {
-//    print("Input text: ")
-//    val text: String = scala.io.StdIn.readLine()
     val regex: Regex = """[aeiouyAEIOUY]""".r
-    /*val matches =*/ regex.findAllMatchIn(text).length
-//    println("Vowels count: " + matches.size)
+    regex.findAllMatchIn(text).length
   }
 
   def tripleSymbol(text: String): String = {
     val regex: Regex = """t""".r
-    /*val tripledText: String =*/ regex.replaceAllIn(text, "ttt")
+    regex.replaceAllIn(text, "ttt")
   }
 
   def removeSpace(text: String): String = {
-    var regex: Regex = """ """.r
-    /*val removedSpaceText: String =*/ regex.replaceAllIn(text, "")
+    val regex: Regex = """ """.r
+    regex.replaceAllIn(text, "")
   }
 
 }
