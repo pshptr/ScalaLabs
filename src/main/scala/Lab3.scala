@@ -46,6 +46,15 @@ object TextProcessingApp {
     val removedSpaceText = removeSpace(text10)
     println("10. Текст с удалёнными пробелами: " + removedSpaceText)
 
+    val text11 = "Replace"
+    val replacement = "kkk"
+    val replacedLettersText = replaceFirstThreeLetters(text11, replacement)
+    println("11. Слово с заменёнными первыми тремя буквами: " + replacedLettersText)
+
+    val text12 = "Remove special !@#$%^&*()_+= symbols"
+    val removedSpecialSymbolsText = removeSpecialCharacters(text12)
+    println("12. Текст с удалёнными специальныими символами: " + removedSpecialSymbolsText)
+
   }
     def replaceLatinWithRussian(text: String): String = {
       val regex: Regex = """[a-zA-Z]""".r
@@ -100,5 +109,13 @@ object TextProcessingApp {
     regex.replaceAllIn(text, "")
   }
 
-}
+  def replaceFirstThreeLetters(text: String, replacement: String): String = {
+    val regex = "\\b(\\w{3})(\\w*)\\b".r
+    regex.replaceAllIn(text, m => replacement + m.group(2))
+  }
 
+  def removeSpecialCharacters(input: String): String = {
+    input.replaceAll("[!@#$%^&*()_+=]", "")
+  }
+
+}
