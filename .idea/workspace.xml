@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="removed unnecessary code parts and comments">
+    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Lab3.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Lab3.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +112,8 @@
       <workItem from="1696543793015" duration="590000" />
       <workItem from="1696615623398" duration="3918000" />
       <workItem from="1696664216479" duration="3943000" />
-      <workItem from="1697194999576" duration="1818000" />
+      <workItem from="1697194999576" duration="2835000" />
+      <workItem from="1698159228571" duration="337000" />
     </task>
     <task id="LOCAL-00001" summary="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
       <created>1696621516371</created>
@@ -164,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696688427234</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)">
+      <created>1697198094912</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697198094913</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +185,8 @@
     <MESSAGE value="changed insertWords, doubleEachLetter, replaceLatinWithRussian and added vowelsCount method." />
     <MESSAGE value="added 2 additional tasks, 9 and 10. tripleSymbol and removeSpace" />
     <MESSAGE value="removed unnecessary code parts and comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary code parts and comments" />
+    <MESSAGE value="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
