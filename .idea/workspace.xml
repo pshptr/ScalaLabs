@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal.">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +41,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Scala Worksheet" />
+        <option value="Scala Object" />
       </list>
     </option>
   </component>
@@ -87,8 +88,7 @@
     <configuration name="Scala Lab 1" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="TextProcessingApp" />
-      <module name="ScalaLabs" />
+      <option name="MAIN_CLASS_NAME" value="ButtonModule" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,6 +114,7 @@
       <workItem from="1696664216479" duration="3943000" />
       <workItem from="1697194999576" duration="2835000" />
       <workItem from="1698159228571" duration="337000" />
+      <workItem from="1698271332702" duration="427000" />
     </task>
     <task id="LOCAL-00001" summary="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
       <created>1696621516371</created>
@@ -171,11 +172,29 @@
       <option name="project" value="LOCAL" />
       <updated>1697198094913</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal.">
+      <created>1698271650888</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1698271650888</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -186,7 +205,8 @@
     <MESSAGE value="added 2 additional tasks, 9 and 10. tripleSymbol and removeSpace" />
     <MESSAGE value="removed unnecessary code parts and comments" />
     <MESSAGE value="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)" />
+    <MESSAGE value="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal." />
+    <option name="LAST_COMMIT_MESSAGE" value="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
