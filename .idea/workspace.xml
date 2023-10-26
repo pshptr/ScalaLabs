@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f1e0a047-bcbc-43c4-987e-fc6c884e3015" name="Changes" comment="added 5 lab code, must be executed in Eclipse IDE with SQL Database" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,6 +113,7 @@
       <workItem from="1697194999576" duration="2835000" />
       <workItem from="1698159228571" duration="337000" />
       <workItem from="1698271332702" duration="427000" />
+      <workItem from="1698320189910" duration="424000" />
     </task>
     <task id="LOCAL-00001" summary="added 3rd lab tasks. work with foldLeft, zip, head and tail, reverse functions. and all 5 tasks from 3rd lab 2nd variant.">
       <created>1696621516371</created>
@@ -179,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698271650888</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added 5 lab code, must be executed in Eclipse IDE with SQL Database">
+      <created>1698320519680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698320519680</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +212,8 @@
     <MESSAGE value="removed unnecessary code parts and comments" />
     <MESSAGE value="added 2 more additional tasks, remove first 3 letters in word to any other letters and 2nd task remove all special symbols(!@#$%^&amp;*()_+=)" />
     <MESSAGE value="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal." />
-    <option name="LAST_COMMIT_MESSAGE" value="added code for lab 4, work with Apache Spark. Run this code in Spark Shell in terminal." />
+    <MESSAGE value="added 5 lab code, must be executed in Eclipse IDE with SQL Database" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 5 lab code, must be executed in Eclipse IDE with SQL Database" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
