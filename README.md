@@ -1,7 +1,7 @@
 # ScalaLabs
 ---
 ## Лабораторные работы по дисциплине "ф-прог" (Функциональное программирование) Scala 3, 3 курс 5 семестр БГУИР КСиС ВМСиС 2023.
-## Мною выполнялись следующие лабораторные работы по варинатам соответственно: лр 1 вар 3, лр 2 вар 2, лр 3 вар 1, лр 4 вар 1
+## Мною выполнялись следующие лабораторные работы по варинатам соответственно: лр 1 вар 3, лр 2 вар 2, лр 3 вар 1, лр 4 вар 1, лаб 5 вар общий.
  ---
 ### Лабораторная работа 1. Создание простых S-проектов на основе классов
 
@@ -209,27 +209,165 @@
 6. Вывести все слова, у которых три и более гласных
 7. Вывести второе слово
 
+---
 
+### Лабораторная работа 5. Работа с базой данных
 
+	import java.awt.event.{ActionEvent, ActionListener}
+	import javax.swing.{JButton, JFrame, JPanel, SwingUtilities}
+	
+	object  ButtonModule {
+	  def main(args: Array[String]): Unit = {
+	    SwingUtilities.invokeLater(() => {
+	      val frame = new JFrame("My Application")
+	      frame.setSize(300, 200)
+	      frame.setLocationRelativeTo(null)
+	      val panel = new JPanel()
+	      val button = new JButton("Click me!")
+	      panel.add(button)
+	
+	      button.addActionListener(new ActionListener {
+	        override def actionPerformed(e: ActionEvent): Unit = {
+	          println("Hello, world!")
+	        }
+	      })
+	
+	      frame.add(panel)
+	      frame.setVisible(true)
+	    })
+	  }
+	}
 
+ Наше  приложение таково
+	
+	import java.awt.event.{ActionEvent, ActionListener}
+	import javax.swing.{JButton, JFrame, JPanel, SwingUtilities}
+	import java.awt.Dimension
+	import javax.swing.{JFrame, JLabel,JTextField, JPanel, SwingUtilities}
+	import java.sql.{Connection, DriverManager, ResultSet}
+	import java.awt.Color
+	
+	object ButtonModule  {
+	   val frame = new JFrame("My Application")
+	  frame.setSize(800, 600)
+	  frame.setLayout(null)
+	  
+	  def main(args: Array[String]): Unit = {
+	       SwingUtilities.invokeLater(() => {
+      
+     // val panel = new JPanel()
+      val label1=new JLabel("Title")
+      val label2=new JLabel("Price")
+      label1.setBounds(50,120,100,20)
+      label2.setBounds(200,120,70,20)
+      val button1 = new JButton("Insert")
+      val button2 = new JButton("Select")
+      val textField = new JTextField(20)
+      val textField2 = new JTextField(20)
+      button1.setBounds(20,80,120,20)
+      button2.setBounds(150,80,250,20)
+      textField.setBounds(20,150,130,20)
+      textField2.setBounds(160,150,130,20)
+      frame.add(button1)
+      frame.add(button2)
+      frame.add(label1)
+      frame.add(textField)
+      frame.add(label2)
+      frame.add(textField2)
+      
+      button1.addActionListener(new ActionListener {
+        override def actionPerformed(e: ActionEvent): Unit = {
+          val url = "jdbc:mysql://localhost:3306/mydb"
+    val username = "root"
+    val password = "1"
+          Class.forName("com.mysql.jdbc.Driver")
+      // Class.forName("org.gjt.mm.mysql.Driver")
 
+          val conn = DriverManager.getConnection(url, username, password)
+   
+          try {
+           val stmt = conn.createStatement()
+        val rs = stmt.execute("INSERT INTO sclad VALUES ('" + textField.getText + "'," + textField2.getText + ")")
+          
+         
+           textField2.setText("")
+           
+          textField.setText("Added record")
+         }
+          finally {
+            conn.close()
+                 }
 
+          
+          
+       //   textField.setText("problems")
+        }
+      })
+        
+      
+      
+      button2.addActionListener(new ActionListener {
+        override def actionPerformed(e: ActionEvent): Unit = {
+          ////////
+          {
+    val url = "jdbc:mysql://localhost:3306/mydb"
+    val username = "root"
+    val password = "1"
 
+    Class.forName("com.mysql.jdbc.Driver")
+    val conn = DriverManager.getConnection(url, username, password)
 
+    try {
+       val stmt = conn.createStatement()
+       val prod_name= textField.getText().toString().trim()
+       val rs = stmt.executeQuery("SELECT * FROM sclad WHERE product = '"+prod_name+"'")
+       while (rs.next()) {
+         
+         val name = rs.getString("product")
+         val price = rs.getInt("price")
+        // println(s"name=$name, price=$price")
+         textField2.setText(""+price)
+         }
+       } finally {
+    conn.close()
+                 }
+}
+    
+          ///////
+          
+          
+       //   textField.setText("Hello World, You say")
+        }
+      })
 
+    
+      frame.setBackground(Color.BLUE)
+      frame.setLocationRelativeTo(null)
+      frame.setVisible(true)
+      
+      })
+  }
+}
+Разберитесь с этим приложением.
 
+#### Вариант Общий.
+1.Расширить количество столбцов таблицы sclad, добавив поле количество товара на складе.
+2.Вывести товар, дающий максимальную прибыль (количество*цену).
+3.Выбрать товар по ограничению (не меньше такой-то величины).
+
+---
 
 # Лекции Scala 
 
-первая лекция 
-ЛК1 ФПрогр Принципы функциональной парадигмы (ФП). Обзор. Современное состояние ФП.
+## первая лекция 
+## ЛК1 ФПрогр Принципы функциональной парадигмы (ФП). Обзор. Современное состояние ФП.
 
-Функциональное программирование - это парадигма программирования, в которой основное внимание уделяется использованию функций как основных строительных блоков программного обеспечения.
+### Функциональное программирование - это парадигма программирования, в которой основное внимание уделяется использованию функций как основных строительных блоков программного обеспечения.
 
 Языки ФП обычно предоставляют такие ф-ии, как ф-ии высшего порядка, лямбда выражения. Примеры языков ФП включают Hаskel, Lisp, ML и Scala. Однако многие другие языки, такие как Python, JavaScrypt и Java, также в некоторой степени поддерживают ФП. В том числе андроид студия поддерживает скала. 
 ФП уходит своими корнями в лямбда исчисления математическую нот ацию разработанную черчем в 30 года 50-60 годы был разработан язык лисп который считается первым языком функционального программирования 70-80 фп приобркло популярность в академичесокм сообщестьве (языки мирандар, мл и тд.), в 90-ч годах в связи с развитием промышленности получили развитие как хаскел и scheme. Сегодня уже используются скала фшарп кложуре. ФП используется на практике например в обработке больших данных поскольку делает упор на неизменяемость и параллелизм. Второе это вэб разработка чаще используетяс для создания интерфейсых приложений треть е фигнансовое моделирование разработка игр(например юнити использует фп для своего языка сценариев). Машинное обучение.
 
-Ключевые Концепции ФП
+### Ключевые Концепции ФП
 1 Использование чистых функций - которая не имеет побочных эффектов возвращают одни и теже выходные данные при одних и тех жке входных. 
 2 Неизменяемость, ФП отдаёт предпочтение неизменяемым структурам данных, те кот нельзя изменить после создания, это упрозает код анализ кода
 3 Ф-ии высшего порядка, это ф-ии кот принимают др ф-иив качве входных данных или возвращает ф-ии в качве выходных данных 
@@ -244,20 +382,20 @@
 
 пример 1:
 
-object Main22{
-
-val f:(Int=>Int) = {
-	val p=10
-	val q=20
-	x=> p+q*x
-}
-
-def main(args: Array[String]): Unit = {
-	val t=f(4)
-	println(t)
-}
-
-}
+	object Main22{
+	
+	val f:(Int=>Int) = {
+		val p=10
+		val q=20
+		x=> p+q*x
+	}
+	
+	def main(args: Array[String]): Unit = {
+		val t=f(4)
+		println(t)
+	}
+	
+	}
 
 
 пример 2:
@@ -468,43 +606,43 @@ object
 Collection эта коллекция над которой выполняется операция свёртки. initial value  это начальное значение аккумудятора или результата, бинарный оператор который обьеденяет каждый элемент коллекции и аккумулятор, работает с разными видами коллекций. 
 
 пример суммы элементов списка:
-
-object Main22 {
-def main(args: Array[String]): Unit = {
-val myList
+	
+	object Main22 {
+	def main(args: Array[String]): Unit = {
+	val myList
 …
 
-zip: функция обьеденяет 2 списка н апримере словаря ключ-значение
+### zip: функция обьеденяет 2 списка н апримере словаря ключ-значение
 
-val a = List(1, 2, 3)
-
-
-object Main22 {
-def main(args: Array[String]): Unit = {
- val a = List(1, 2, 3)
- val b = List(«one», «two», «three»)
- val zipped = a
+	val a = List(1, 2, 3)
+	
+	
+	object Main22 {
+	def main(args: Array[String]): Unit = {
+	 val a = List(1, 2, 3)
+	 val b = List(«one», «two», «three»)
+	 val zipped = a
 …
 
 zip применяем при  элементы двух списков обьеденяется в пары в результате получается список кортежей дальше применяется фильтрация каждому элементу списка если условие выполняется true мы оставляем эту пару в списке
 
 Можно выводить элементы вот так:
 
-zipped.foreach {case (a,b) => println…
-// one
-//two
-//three
+	zipped.foreach {case (a,b) => println…
+	// one
+	//two
+	//three
 
 
 Примеры
 
 Сумма элементов списка 
 
-object Main 22 {
-	def sumLIst(Ist: List[Int]): Int = {
-		if(Ist:isEmpty) 0
-		else Ist.head + sumList(Ist.tail
-…
+	object Main 22 {
+		def sumLIst(Ist: List[Int]): Int = {
+			if(Ist:isEmpty) 0
+			else Ist.head + sumList(Ist.tail
+	…
 
 при работе со списками используется рекурсия практически всегда, для этого у нас есть несколько веток для работы со списками первая ветка относится к простейшим случаям, к пустым спискам, к спискам с одним элементом, с головой списка. Последующие ветки относятся к более общему случаю и имеют следующее назначение: если список нее соответствует простейшему случаю, то следует уменьшить его на один элемент и применить рекурсию к укороченному списку и при этом в памяти сохраняется информацию о том что обработка предыдущего вызова функции ещё не закончена. 
 
@@ -520,14 +658,14 @@ def sizeList
 
 
 Минимальный элемент списка:
-
-import scala.io.Stdln
-
-object Main28 {
-	def minList(Ist: List[Int], minval: Int): Int = {
-		if (Ist.isEmpty) minval
-		else if (Ist.head < minval) minList(Ist.tail, Ist.head)
-		else minList(Ist.tail, minval)  }
+	
+	import scala.io.Stdln
+	
+	object Main28 {
+		def minList(Ist: List[Int], minval: Int): Int = {
+			if (Ist.isEmpty) minval
+			else if (Ist.head < minval) minList(Ist.tail, Ist.head)
+			else minList(Ist.tail, minval)  }
 
 Минимальный элемент списка: 
 
@@ -547,92 +685,92 @@ def main(args: Array[String]): Unit = {
 	println(minw)  } }}
 
 Отыскание элемента по индексу:
+	
+	object Main22 {
+	def posList(Ist: List[Int], pos: Int): Int = {
+	…
+	
+	
+	Строки
+	
+	Операции со строками 
+	
+	val s1 = «hello»
+	val s2 = «world»
+	
+	// Concetanation
+	val s3 = s1 + «» + s2 // «hello world»
+	
+	// Length
+	val len = s3.length // 11
+	
+	// Substring
+	val sub = s3.substring(0, 5) // «hello»
+	
+	// Replace
+	val replaced = s3.replace(«hello», «hi») // «hi world»
+	
+	// Split
+	val parts = s3.split(«») // hello, world
 
-object Main22 {
-def posList(Ist: List[Int], pos: Int): Int = {
-…
+### String это неизменяемый класс это значит что после создания строки её значение нельзя изменить. Строки мы можем передавать и возвращать как аргумент функции.
 
 
-Строки
-
-Операции со строками 
-
-val s1 = «hello»
-val s2 = «world»
-
-// Concetanation
-val s3 = s1 + «» + s2 // «hello world»
-
-// Length
-val len = s3.length // 11
-
-// Substring
-val sub = s3.substring(0, 5) // «hello»
-
-// Replace
-val replaced = s3.replace(«hello», «hi») // «hi world»
-
-// Split
-val parts = s3.split(«») // hello, world
-
-String это неизменяемый класс это значит что после создания строки её значение нельзя изменить. Строки мы можем передавать и возвращать как аргумент функции.
-
-
-Развитые типы функций. Операторы
+## Развитые типы функций. Операторы
 
 Класс содержащий 1 или несколько абстрактных методов должен быть обьявлен как абстрактный. Абстрактные классы также могут иметь не абстрактные методы с реализацией. Абстрактный метод - метод который обьявлен и не имеет реализации в том же классе вместо этого реализация метода откладывается до подкласса, ключевое слово abstract. 
 
-abstract class Animal {
-	def makeSound(): Unit
-}
-class Dog extends Animal {
-	def makeSound(): Unit = {
-	println(«Woof-fff»)
+	abstract class Animal {
+		def makeSound(): Unit
 	}
-}
-class Cat extends Animal {
-	def makeSound(): Unit = {
-	println(«Mia-uuu»)
-	} 
-}
-
-object Main22 {
-
-def main(args: Array[String]: Unit = {
-	val myDog = new Dog
-	myDog.makeSound()
-	val MyCat = newCat
-	myCat.makeSound()
-
-
-abstarct class Animal {
-	def makeSound1 (): Unit = {
-		println(«Po»)
+	class Dog extends Animal {
+		def makeSound(): Unit = {
+		println(«Woof-fff»)
+		}
 	}
-}
-class Dog extends Animal
+	class Cat extends Animal {
+		def makeSound(): Unit = {
+		println(«Mia-uuu»)
+		} 
+	}
+	
+	object Main22 {
+	
+	def main(args: Array[String]: Unit = {
+		val myDog = new Dog
+		myDog.makeSound()
+		val MyCat = newCat
+		myCat.makeSound()
+	
+	
+	abstarct class Animal {
+		def makeSound1 (): Unit = {
+			println(«Po»)
+		}
+	}
+	class Dog extends Animal
 
 
 Частично применимые ф-ии можно создавать, т.е. ф-ии которые  принимают некоторые, но не все свои аргументы, то есть она применяется к части своих аргументов
 
-object Main22 {
-
-def add(x: Int, y: Int, z: Int): Int = { // частично применимая ф-я
-	x + y + z
-}
-
-def main(args: Array[String]): Unit = {
-	val addTwo = add(_: Int, 2, _: Int)
-
-	val result2 = addTwo(3, 5) // result is 10
-	println(result2)
+	object Main22 {
+	
+	def add(x: Int, y: Int, z: Int): Int = { // частично применимая ф-я
+		x + y + z
 	}
-}
+	
+	def main(args: Array[String]): Unit = {
+		val addTwo = add(_: Int, 2, _: Int)
+	
+		val result2 = addTwo(3, 5) // result is 10
+		println(result2)
+		}
+	}
 
 Частично применимые ф-ии можно создавать при помощи лямбда выражений которые являются анонимными ф-ями
 
-val multiplyByTwo: Int => int = _ * 2
-val result = multiplyByTwo(5)
+	val multiplyByTwo: Int => int = _ * 2
+	val result = multiplyByTwo(5)
 
 Частично применимые ф-ии полезны когда хотим создать ф-ии которые похожи но имеют некоторые различия в своих аргументах. Их используют для создания ф-ий более высокого порядка и для передачи ф-ий в кач-ве аргумента другим функциям. Ленивые вычисления тоже есть в Scala, они определяются ключевым словом lazy val. lazу val - это значение которое оценивается только при первом доступе к нему. Полезно когда есть затратная вычислительная операция которую мы не хотим выполнять пока она не потребуется. 
 
@@ -688,8 +826,8 @@ val result = multiplyByTwo(5)
 | (bitwise OR)
 ^ (bitwise XOR)
 ~ bitwise complement)
-<< left shift)
->> right shift)
+<< (left shift)
+>> (right shift)
 
 Операторы пользователя
    
@@ -734,31 +872,31 @@ val result = multiplyByTwo(5)
 
 ### Функции для рабоыты со строками 
 
-Класс StringBuilder и класс String представляют разные подходы к работе с текстовыми данными в Java. 
+#### Класс StringBuilder и класс String представляют разные подходы к работе с текстовыми данными в Java. 
 Отличия между ними: 
 1. объекты класса String являются неизменяемыми. Такие операции надо строкой как компетинация, замена символа создаёт новый объект строки, в то время как объекты класса StringBuilder являются изменяемыми, их можно изменять не создавая новые объекты, что позволяет сэкономить памить.
 2. Отличаются своими методами, StringBuilder помимо базовых (ужаление, добавление) содержит свои методы для вставки, удаления, добавлени.
 
-Например: (методы StringBuilder)
+#### Например: (методы StringBuilder)
 1. append(x:Any):StringBuilder добавляет строковое представление заданного значения x в конец строки.
 2. insert(index: Int, x:Any):StringBuilder вставяляет строковое представление заданного значения x по указанному индексу, возвращает уже изменённое значение StringBuilder.
 3. delete(start: Int, end:Int):StringBuilder удаляет значения в диапазоне от start до end (start включительно, end не включительно), возвращает уже изменённое значение.
 4. replace(start: Int, end: Int, str:String):StringBuilder заменяет символы в диапазоне от start до end заданной строки (start включительно, end не включительно), возвращает уже изменённое значение.
 5. reverse
 
-object main22{
-def main(args:Array[String]):Unit = {
- val sb = new StringBuilder()
- sb.append("hello")
- sb.append("")
- sb.append("world")
- sb.appendAll(Seq('!', '!', '!'))
- sb.insert(5, "there")
- sb.delete(0, 6)
- sb.replace(5, 11, "Scala")
- val reversed = sb.toString.reverse
-
- println(reversed) = sb.toString.reverse !!!alacSereht
+		object main22{
+		def main(args:Array[String]):Unit = {
+		 val sb = new StringBuilder()
+		 sb.append("hello")
+		 sb.append("")
+		 sb.append("world")
+		 sb.appendAll(Seq('!', '!', '!'))
+		 sb.insert(5, "there")
+		 sb.delete(0, 6)
+		 sb.replace(5, 11, "Scala")
+		 val reversed = sb.toString.reverse
+		
+		 println(reversed) = sb.toString.reverse !!!alacSereht
 
  Класс String предоставляет следующий набор функций для работы со строками:
  ##### replaceAll
@@ -794,15 +932,19 @@ def main(args:Array[String]):Unit = {
     println(sub.Str)
 
 ##### toLowerCase, toUpperCase
-Изменяет регистры из верхнего к нижнему и наоборот
+Изменяет регистры из верхнего к нижнему и наоборот.
+ Пример:
 
+    val str = "Hello Wolrd" 
+    println(str.toLowerCase) // "hello world"
+    println(str.toUpperCase) // "HELLO WORLD"
 
+##### trim
 Отсекает концевые пробелы из конца строки и из начала строки
  Пример:
 
-    val str = "Hello Wolrd"
-
-
+    val str = " Hello Wolrd "
+    println(str.trim) // "Hello World"
 
 ##### indexOf, lastIndexOf
 Получает 1-й и последний индекс подстроки в строке (то есть номер позиции с которой начинается подстрока).
@@ -814,43 +956,70 @@ def main(args:Array[String]):Unit = {
 
 ##### toCharArray
 Преобразует строку в массив символов.
+Пример:
 
-
+	 val str = "Hello Wolrd"
+	 val arr = str.toCharArray
+	 println(arr.mkstring("")) // [Hello World]
 
 ##### charAt
 Определяет символ стоящий на указанной позиции (нумерация с нуля, пробел учитывается).
-
 Пример:
 
-val str = "Hello, World!"
-println(str.charAt(7)) // 'W'
+	val str = "Hello, World!"
+	println(str.charAt(7)) // 'W'
 
 ##### stripMargin
 Используется для удаления отступов (марген) из многострочных строк. При исползовании этой функции каждая строка в многострочной строке должна начинаться с символа вертекальной черты, отступы в этом случае будут удалены, вертикальная черта даёт выравнивание по левому краю.
 Пример: 
 
-val str = 
-"""
-| Hello
-| World
+	val str = 
+	"""
+	| Hello
+	| World
 
 ##### toInt
 Используется для пареобразования строки в целое число. При преобразовании может возникнуть ошибка если строка например не 123 а abc тогда будет ошибка которую необходимо перехватить
 Пример:
 
-object main(args:Array[String]):Unit = {
-
-
+	object Main22{
+	def main(args:Array[String]):Unit = {
+	val str = "123"
+	val num = str.toInt
+	println(num) // 123
 
 ##### toDouble
 Преобразует строку в число с плавающей точкой.
+Пример:
 
+	object Main22 {
+	def main(args:Array[String]):Unit = {
+	val str = "3.14"
+	val num = str.toDouble
+	println(num) // 3.14
+	val str2 = "abc"
+	try {
+	val num = str2.toDouble
+	println(num)
+	} catch {
+	case e = NumberFormatException => println("Envalid Number Format") }}}
 
 ##### getBytes()
 Пркобразует строку в массив байт.
 Пример: 
 
+	val str = "Hello World"
+	val bytes = str.getBytes()
+	println(bytes.mkString("")) // 72 101 108 108 111 44 32 87 111 114 108 100 33
 
-И наоборот из массива байтов в строку, то есть наоборот. 
+И наоборот из массива байтов в строку. 
+Пример: 
 
-object main22 {
+	object Main22 {
+	def main(args:Array[String]):Unit = {
+	val bytes = Array[Byte](72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33) // bytes corresponding to hello
+	val str = new String(bytes, "UTF-8")
+	println(str)
+	}
+	}
+
