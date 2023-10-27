@@ -210,6 +210,50 @@
 6. Вывести все слова, у которых три и более гласных
 7. Вывести второе слово
 
+### Доп задания: 
+1-е задание: написать 2 предложения на английском языке и удалить оттуда все пробелы между словами через регулярные выражения двумя разными способами.
+________________________________________________________________________________________
+
+	val sentences = Seq("This is the first sentence.", "Here is the second sentence.")
+	val sentenceRDD = spark.sparkContext.parallelize(sentences)
+	
+	val sentenceWithoutSpaces1 = sentenceRDD.map(sentence => sentence.replaceAll(" ", ""))
+	sentenceWithoutSpaces1.collect().foreach(println)
+	
+	val sentenceWithoutSpaces2 = sentenceRDD.map(sentence => sentence.split(" ").mkString(""))
+	sentenceWithoutSpaces2.collect().foreach(println)
+
+________________________________________________________________________________________
+
+	val sentences = Seq("This is the first sentence.", "Here is the second sentence.")
+	val sentenceRDD = spark.sparkContext.parallelize(sentences)
+	
+	val sentencesWithoutSpaces = sentenceRDD.map(sentence => sentence.replaceAll("\\s", ""))
+	sentencesWithoutSpaces.collect().foreach(println)
+
+________________________________________________________________________________________
+
+2-е задание: в слове mother утроить букву t.
+________________________________________________________________________________________
+
+	val word = "mother"
+	val wordWithTripleT = word.replace("t", "ttt")
+	println(wordWithTripleT)
+
+3-e задание: удалить все гласные во всех словах из двух английских предложений из 1-го задания.
+________________________________________________________________________________________
+
+	val sentences = Seq("This is the first sentence.", "Here is the second sentence.")
+	val sentenceRDD = spark.sparkContext.parallelize(sentences)
+	
+	val vowels = "aeiouAEIOU"
+	val wordsWithoutVowels = sentenceRDD.flatMap(sentence => {
+	  val words = sentence.split(" ")
+	  words.map(word => word.replaceAll(s"[$vowels]", ""))
+	})
+	wordsWithoutVowels.collect().foreach(println)
+____________________________________________________________________________________
+
 ---
 
 ### Лабораторная работа 5. Работа с базой данных
