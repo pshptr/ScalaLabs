@@ -1,9 +1,7 @@
-import java.awt.event.{ActionEvent, ActionListener}
-import javax.swing.{JButton, JFrame, JPanel, SwingUtilities}
-import java.awt.Dimension
-import javax.swing.{JFrame, JLabel,JTextField, JPanel, SwingUtilities}
-import java.sql.{Connection, DriverManager, ResultSet}
 import java.awt.Color
+import java.awt.event.{ActionEvent, ActionListener}
+import java.sql.DriverManager
+import javax.swing.*
 
 
 
@@ -16,7 +14,7 @@ object ButtonModule {
     SwingUtilities.invokeLater(() => {
       val productLabel = new JLabel("Product")
       val priceLabel = new JLabel("Price")
-      val countLabel = new JLabel("Count")
+      val countLabel = new JLabel("count_of_products")
       val moreThanLabel = new JLabel("More than (price)")
       productLabel.setBounds(20, 120, 130, 20)
       priceLabel.setBounds(160, 120, 130, 20)
@@ -59,9 +57,9 @@ object ButtonModule {
 
       insertButton.addActionListener(new ActionListener{
         override def actionPerformed(e: ActionEvent): Unit = {
-          val url = "jdbc:mysql://localhost:3306/scaladb"
+          val url = "jdbc:mysql://localhost:3306/mysql"
           val username = "root"
-          val password = "123"
+          val password = "petia2010"
 
           Class.forName("org.gjt.mm.mysql.Driver")
 
@@ -82,9 +80,9 @@ object ButtonModule {
 
       selectButton.addActionListener(new ActionListener{
         override def actionPerformed(e: ActionEvent): Unit = {
-          val url = "jdbc:mysql://localhost:3306/scaladb"
+          val url = "jdbc:mysql://localhost:3306/mysql"
           val username = "root"
-          val password = "123"
+          val password = "petia2010"
 
           Class.forName("org.gjt.mm.mysql.Driver")
 
@@ -97,8 +95,8 @@ object ButtonModule {
             while(rs.next()){
               val product = rs.getString("product")
               val price = rs.getInt("price")
-              val count = rs.getInt("count")
-              println(s"name=$product, price=$price, count=$count")
+              val count = rs.getInt("count_of_products")
+              println(s"name=$product, price=$price, count_of_products=$count")
             }
             println("")
           }
@@ -108,41 +106,42 @@ object ButtonModule {
         }
       })
 
-      getMoreThanButton.addActionListener(new ActionListener{
-        override def actionPerformed(e: ActionEvent): Unit = {
-          val url = "jdbc:mysql://localhost:3306/scaladb"
-          val username = "root"
-          val password = "123"
+      val priceMoreThanOneButton = new JButton("Price More Than 1")
+      priceMoreThanOneButton.setBounds(160, 200, 180, 20)
+      frame.add(priceMoreThanOneButton)
 
-          Class.forName("org.gjt.mm.mysql.Driver")
+      priceMoreThanOneButton.addActionListener(new ActionListener {
+                override def actionPerformed(e: ActionEvent): Unit = {
+                  val url = "jdbc:mysql://localhost:3306/mysql"
+                  val username = "root"
+                  val password = "petia2010"
 
-          val connection = DriverManager.getConnection(url, username, password)
-          try{
-            val statement = connection.createStatement()
-            val minPrice = moreThanField.getText().toString().trim()
-            val rs = statement.executeQuery("SELECT * FROM products WHERE price > " + minPrice)
+                  Class.forName("org.gjt.mm.mysql.Driver")
 
-            println("Products with price more than " + minPrice + ":")
-            while(rs.next()){
-              val product = rs.getString("product")
-              val price = rs.getInt("price")
-              val count = rs.getInt("count")
-              println(s"name=$product, price=$price, count=$count")
-            }
-            println("")
-            moreThanField.setText("")
-          }
-          finally{
-            connection.close()
-          }
-        }
-      })
+                  val connection = DriverManager.getConnection(url, username, password)
+                  try {
+                    val statement = connection.createStatement()
+                    val rs = statement.executeQuery("SELECT product, price FROM products WHERE price > 1 GROUP BY product")
+
+                    println("Products with Price More Than 1:")
+                    while(rs.next()){
+                      val product = rs.getString("product")
+                      val price = rs.getDouble("price")
+                      println(s"Product=$product, Price=$price")
+                    }
+                    println("")
+                  }
+                  finally {
+                    connection.close()
+                  }
+                }
+              })
 
       getMaxButton.addActionListener(new ActionListener{
         override def actionPerformed(e: ActionEvent): Unit = {
-          val url = "jdbc:mysql://localhost:3306/scaladb"
+          val url = "jdbc:mysql://localhost:3306/mysql"
           val username = "root"
-          val password = "123"
+          val password = "petia2010"
 
           Class.forName("org.gjt.mm.mysql.Driver")
 
@@ -156,14 +155,14 @@ object ButtonModule {
               max = rs1.getInt("m")
             }
 
-            val rs = statement.executeQuery("SELECT * FROM products WHERE price * count = " + max)
+            val rs = statement.executeQuery("SELECT * FROM products WHERE price * count_of_products = " + max)
 
-            println("Max price * count:")
+            println("Max price * count_of_products:")
             while(rs.next()){
               val product = rs.getString("product")
               val price = rs.getInt("price")
-              val count = rs.getInt("count")
-              println(s"name=$product, price=$price, count=$count")
+              val count = rs.getInt("count_of_products")
+              println(s"name=$product, price=$price, count_of_products=$count")
             }
             println("")
           }
@@ -172,6 +171,43 @@ object ButtonModule {
           }
         }
       })
+
+
+      val avgPriceButton = new JButton("Average Price")
+      avgPriceButton.setBounds(20, 200, 130, 20)
+      priceMoreThanOneButton.setBounds(160, 200, 180, 20)
+
+      frame.add(avgPriceButton)
+      frame.add(priceMoreThanOneButton)
+
+      avgPriceButton.addActionListener(new ActionListener {
+        override def actionPerformed(e: ActionEvent): Unit = {
+          val url = "jdbc:mysql://localhost:3306/mysql"
+          val username = "root"
+          val password = "petia2010"
+
+          Class.forName("org.gjt.mm.mysql.Driver")
+
+          val connection = DriverManager.getConnection(url, username, password)
+          try {
+            val statement = connection.createStatement()
+            val rs = statement.executeQuery("SELECT AVG(price) AS avg_price FROM products GROUP BY product")
+
+            println("Average Price for Each Product:")
+            while (rs.next()) {
+              val product = rs.getString("product")
+              val avgPrice = rs.getDouble("avg_price")
+              println(s"Product=$product, Avg Price=$avgPrice")
+            }
+            println("")
+          }
+          finally {
+            connection.close()
+          }
+        }
+      })
+
+
 
       frame.setBackground(Color.BLUE)
       frame.setLocationRelativeTo(null)
