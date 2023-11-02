@@ -1130,5 +1130,69 @@ def main(args: Array[String]): Unit = {
 javax.swing - пакет представляющий набор классов и компонентов для создания GUI приложений на Java.
 Слуiатель действий саоздаётся как анонимный внутренний класс который реализует интерфейс actionListener и переопhеделяет его в метод actionPerformed.
 
+## лекция 02.11.2023
+### Использование текстовых полей 
 
+	import java.awt.event.{ActionEvent, ActionListener}
+	import javax.swing.{JButton, JFrame, JPanel, SwingUtilities}
+	object ButtonModule {
+	def main(args: Array[String]): Unit = {
+	SwingUtilities.invokeLater(() => {
+	val frame = new JFrame("My Application") frame.setSize(300, 200) frame.setLocationRelativeTo(null)
+	val panel = new JPanel()
+	val button = new JButton("Click me!") panel.add(button)
+	button.addActionListener(new ActionListener {
+	override def actionPerformed(e: ActionEvent): Unit = {
+	8
+	println("Hello, world!")
+	        }
+	})
+	      frame.add(panel)
+	frame.setVisible(true) })
+	} }
 
+ Меню создаётся в 3 этапа: сначала полосу bar, затем размещаем на полосе пункты меню, затем в каждом пункте menu создаём опции, они называются menu item. 
+
+ Создание простого меню в окне (фрейме)
+
+	import java.awt.event.{ActionEvent, ActionListener}
+	import javax.swing.{JButton, JFrame, JPanel, SwingUtilities}
+	import javax.swing.{JFrame, JLabelm JTextField, JPanel, SwingUtilities}
+	import java.awt.{Menu, MenuBar, MenuItem}
+	
+	object ButtonModule {
+		def main(args:Array[String]):Unit = {
+	 	SwingUtilities
+	  ...
+	
+	  val fileMenu = new Menu("File")
+	  menuBar.add(fileMenu)
+	
+	  val exitItem.addActionListener((_:java.awt.event.ActionEvent) => { frame.dispose() })
+	
+	  fileMenu.addItem(exitItem)
+	  val panel = new JPanel()
+	  val button new JButton("Click me!")
+	  panel.add(button)
+	
+	  button.addActionListener(new ActionListener {
+	  	override def actionPerfomed(e: ActionEvent):Unit = {
+	   		println("Hello, wolrd !") } } )
+		frame.add(panel)
+	 	frame.setLocationrelativeTo(null)
+	  	frame.setVisible(true)
+	   		})
+		}
+	}
+
+ ### Работа с базой данных
+ Команды:
+ * create database lab_5;
+ * use lab_5;
+ * create table stock(product varchar(15) primary key, price int(3), count_of_products int);
+ * INSERT INTO stock (product, price, count_of_products) VALUES (banana,180,50);
+ * select * from stock;
+
+ 
+
+ 
