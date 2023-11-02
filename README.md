@@ -1193,6 +1193,60 @@ javax.swing - пакет представляющий набор классов 
  * INSERT INTO stock (product, price, count_of_products) VALUES (banana,180,50);
  * select * from stock;
 
- 
+         insertButton.addActionListener(new ActionListener{
+        override def actionPerformed(e: ActionEvent): Unit = {
+          val url = "jdbc:mysql://localhost:3306/mysql"
+          val username = "root"
+          val password = "petia2010"
 
- 
+          Class.forName("org.gjt.mm.mysql.Driver")
+
+          val connection = DriverManager.getConnection(url, username, password)
+
+          try{
+            val statement = connection.createStatement()
+            val rs = statement.execute("INSERT INTO products VALUES ('" + productField.getText() + "'," + priceField.getText() + "," + countField.getText() + ")")
+            productField.setText("")
+            priceField.setText("")
+            countField.setText("")
+          }
+          finally{
+            connection.close()
+          }
+        }
+      })
+
+## Для работы с базой данных нужно с ней соедениться. Есть сама база данных, MySQL в нашем случае, номер порта localhost - это адрес компьютера, потом драйвер database-connector.jar. Реальное соединение просиходит во второй строке где Array -  указываем логин, пароль и имя.
+Кроме сравнения непосредственно со значениями условия поиска могут содеожать специальный шаблон, то есть если наша строка удовлетворяет шаблону мы её выводим. Такое сравнение это LIKE по шаблону "%" это все символы, "_" - один символ:
+	
+ 	select * from sclad where product LIKE '__cot'7;
+
+Следующий оператор CONTAINS проверяет наличие заданной строки символов в любом месте искомой строки:
+
+	select * from sclad CONTAINS(TITLE, 'I');
+
+ Операторы:
+
+ - BETWEEN (указывает из диапазона)
+ - AND
+ - OR
+
+Оператор IN. Выводит значение соответсвующее определенному множеству:
+
+	select * tovar from sclad where product IN ('carrot', 'apple', 'apricot');
+
+
+### Агрегатные функции
+
+* AVG - возвращает среднее значение поля для группы строк.
+* COUNT -  подсчитывает количество строк, игнорируется значение NULL
+* MIN
+* MAX
+* SUM
+
+Можно использоать отдельно без всяких GROUP_BY, а можно использовать вместе с GROUP_BY.
+
+* GROUP_BY - используется для группировани результирующего по не агрегатному столбцу
+* HAVING
+* ORDER_BY
+
