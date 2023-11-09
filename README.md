@@ -1101,8 +1101,24 @@ def main(args: Array[String]): Unit = {
 	    		color = colorOfCar;
 	      		println("New color of car:" + color);
 			}
+   		car1.changeColor("Red")
+    		car2.changeColor("Blue")
+     		car3.changeColor("Green")
+       		println("Updated car details: + car1.make + "" + car1.model + "" + car1.year + "" + car1.color")
+	 	println("Updated car details: + car2.make + "" + car2.model + "" + car2.year + "" + car2.color")
+  		 println("Updated car details: + car3.make + "" + car3.model + "" + car3.year + "" + car3.color")
 	  }
 
+	// Output:
+	Car details: Honda City 1996
+	Car details: Honda Accord 1999
+	Car details: Honda Amaze 2015
+	New color: Red
+	New color: Blue
+	New color: Green
+	Updated car details: Honda City 1996 Red
+	Updated car details: Honda Accord 1999 Blue
+	Updated car details: Honda Amaze 2015 Green
 
 
    ### Создание приложений с визуальным интерфейсом
@@ -1259,8 +1275,6 @@ Spark Context - отвечает за устанновку и натсройку
 Paralelize - метод который создает распределнную коллекцию данных RDD. В данном случае распараллеливает последоватлеьность 1 2 3 4 5, то есть получаетс, что Paralelize распаралеливает вычисления по разным узлам кластера.
 Кластер Spark - это распределённая вычислительная среда которая состоит из нескоьких распределеенных узлов компьютеров объедененных в единую систему для выполнения вычислений с использованием Apache Spark. 
 
-... дописать
-
 В кластере Spark узлы могут выполнять различные роли:
 
 * Мастер узел 
@@ -1292,9 +1306,66 @@ Collect возвращает набор данных Array как массив
 
 ### countByValue, countByValueApprox
 
-countByValuе() - используется для подсчета количества вхождения каждого уникального значения в RDD, позволяет найти количество вхождений каждого уникального элемента и представить результат в виде пары ключ-значение, где ключом является уникальное значение 
+countByValuе() - используется для подсчета количества вхождения каждого уникального значения в RDD. Позволяет найти количество вхождений каждого уникального элемента и представить результат в виде пары ключ-значение, где ключом является уникальное значение, а значением - количество вхождений. 
 
-... дописать
+countByValueApprox() - используется для приближенного подсчета количества вхождений каждого уникального значения в RDD. Этот метод позволяет получить быстрый приближенный результат подсчета количества вхождений без полного сканирования всего набора данных. Коэффициент доверия, то есть 
 
-для валью эппрокс - коэффициент доверия то ест от 0 до 1 используется для больших наборов данных чтобы сэкономить время подсчета например возвращает интервал - это значит, что наш ответ лежит в диапазоне, а интервальная оценка - это погрешность вычислений, то есть плата за быстрый подсчет большого набора данных. по умолчанию он 0,95 First - возвращает первый элемент в наборе 
+	scala> val listRDD = sc.parallelize(List(1, 2, 3, 4, 5))
+	listRDD: org.apache.spark.rdd.RDD[Int] = ParallelCollectionRDD[10]
 	
+	scala> println("countByValue : " + listRDD.countyByValue())
+	countyByValue : Map(5 -> 1, 1 -> 2, 2 -> 2, 3 -> 2, 4 -> 1)
+
+ 
+	
+	scala> val counts = listRDD.countByValueApprox(1000, 0.9)
+	counts: org.apache.spark.partial.PartialResult[scala.collection.Map[Int, org.apache.spark.partial.BoundedDouble]] = 1: Map(5 -> [1,000, 1,000], 1 -> [2,000, 2,000], 2 -> [2,000, 2,000], 3 -> [2,000, 2,000], 4 -> [1,000, 1,000]))
+
+
+
+
+	val listRDD = sc.parallelize(List(1, 2, 3, 4, 5))
+	def param0 = (accu:Int, v:Int) => accu + v
+	def param1 = (accu1:Int, accu2:Int) => accu1 + accu2
+	print;n("aggregate: " + listRDD.aggregate(0)(param0, param1))	
+
+#### first
+first() - возвращает ервый элемент в наборе.
+ 
+	 // first println("first: " + listRDD.first())
+
+#### top
+top() - возвращает первые n элементов в наборе.
+Note: Испоьзуйте этот метод только тогда, когда набор небольшой.
+
+	// top println("top: " + lostRDD.top(2).mkString(","))
+	// Output: take: 5,4
+
+#### min
+min() - возвращает минимальный элемент в наборе.
+	
+	// min println("min: " + listRDD.min())
+	// Output: min: 1
+
+#### max
+max() - min() - возвращает максимальный элемент в наборе.
+	
+	// max println("max: " + listRDD.max())
+	// Output: min: 5
+
+### take, takeOrdered, takeSample
+
+take() - возвращает первые num элементов в наборе.
+
+takeOrdered() - возвращает  первые num наменьших элементов в наборе.
+
+takeSample() - исползуется для выбора слчайных элементов из RDD.
+
+	// take, takeOrdered, takeSample
+	val listRDD = sc.parallelize(List(1, 2, 3, 4, 5))
+	println("take: " + listRDD.take(2).mkString(","))
+	// Output: take: 1, 2
+	
+	println("takeOrdered: " + listRDD.takeOrdered(2).mkString(","))
+	// Output: takeOrdered: 1, 1
+	 
