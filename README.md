@@ -1377,6 +1377,19 @@ takeSample() - исползуется для выбора слчайных эл�
 фотка
 ...
 
+* Функция top() возвращает указанное количество наибольших элементов из RDD в порядке убывания. Если указано значение n, то будет возвращено n наибольших элементов.
+
+		val listRDD = sc.parallelize(List(1, 2, 3, 4, 5, 3, 2))
+		val topElements = listRDD.top(3)
+		// Output
+		topElements:Array[Int] = Array(5, 4, 3)
+
+* Функция take() возвращает указанное количество наибольших элементов из RDD в порядке, в котором они расположены в исходном наборе данных. Если указано значение n, то будет возвращено не более n элементов. Например:
+
+		val takenElements = listRDD.take(3)
+		// Output
+		takenElements:Array[Int] = Array(1, 2, 3)
+
 * union(otherRDD) - возвращает новый RDD, содержащий элементы как из RDD, так и из otherRDD.
 * subtract(otherRDD) - возвращает новый RDD, который содержит элементы в RDD, но не в otherRDD.
 * cartesian(otherRDD) - возвращает декартово произведение элементов RDD и otherRDD.
@@ -1435,4 +1448,50 @@ Natural Language Processing (NLP) - это область компьютернн
 * Классификация текста: автоматическое присвоение тексту определенной категории или метки (например, определение тональности текста, определение темы и т.д.)
 * Машинный перевод: овтоматический перевод текста с одного языка на другой и т.д.
   
-   
+
+ * Находим файл JAR с именем opennlp-tools-1.8.0.jar. Сидит в подписке lib.
+ * Распаковываем его по пути, где лежит Scala (добавляем туда каталог opennlp).
+Через Google скачиваем ещё 2 файла:
+* en-token.bin
+* en-ner-person.bin
++ Нужно вытянуть из врхива openNLP.jar 2 файла:
+  * opennlp-tools-1.8.0.jar
+  * TokenizerModel.class
+ 
+#### Пример выполнения именованного распознавания сущностей в тексте на английском языке:
+
+	import java.sq;.{Connection, DriverManager, ResultSet}
+	import java.io.FileInputStream
+	import opennlp.tools.namefind.{NameFinderME, TokenNameFinderModel}
+	import opennlp.tools.tokenize.*
+	import opennlp.tools.util.Span
+	
+	object Main25 {
+		def main(args:Array[String]):Unit = {
+	 		// Load tokenizer model
+	   		val tokenizerModelIn = new FileInputStream("en-token.bin")
+			val tokenizerModel = new 						   opennlp.tools.tokenize.TokenizerModel(tokenizerModelIn)
+	  		val tokenizer = new new opennlp.tools.tokenize.TokenizerME(tokenizerModel)
+	    		// Load NER model
+	      		val nerModelIn = new FileInputStream("en-ner-person.bin")
+			val ner = new NameFinderME(nerModel)
+	
+	  		// Define some sample text
+	    		val text = "John Smith is a software engineer at Google."
+	
+	      		// Tokenize the text
+			val tokens = tokenizer.tokenize(text)
+	
+	  		// Find the named entities in the text
+	    		val spans = ner.find(tokens)
+	
+	      		// Print the named entities and their types
+			for(span <- spans) {
+	  			val entityType = span.getType
+	     			val entity = tokens.slice(span.getStart, span.getEnd).mkString("")
+				println(s"$entityType: $entity")
+	   		}
+	     	   }
+	      }
+
+
