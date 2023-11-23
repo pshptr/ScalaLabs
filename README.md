@@ -1495,3 +1495,110 @@ Natural Language Processing (NLP) - это область компьютернн
 	      }
 
 
+## Лекция 23.11.2023
+
+...
+
+### Именная группа (NOUN PHRASE) 
+
+Именная группа - это группа слов которые вместе обозначают и описывают человека, место, вещь. Состоит из существительного или местоимения, которое служит началом фразы, и любых сопутствующих модификаторов.
+
+Несколько примеров словосочетаний с сущиствительными:
+
+* The big, red apple
+* His favorite book
+* The city of New York
+* An idea worth exploring
+
+#### Пример кода opennlp
+
+	import java.sql.{Connection, DriverManager, ResultSet}
+	import java.io.FileInputStream
+	import opennlp.tools.namefind.{NameFinderME, TokenNameFinderModel}
+	import opennlp.tools.tokenize.{Tokenizer, TokenizerME, TokenizerModel}
+	import opennlp.tools.util.Span
+	import opennlp.tools.parser.ParserFactory
+	import opennlp.tools.parser.ParserModel
+	import opennlp.tools.parser.Parse
+	import opennlp.tools.cmdline..parser.ParserTool
+	import scala.collection.JavaConverters._
+	
+	object Main25 {
+		def getNounPhrases(parse: Parse): List[String] = { // Принимает обьект parser и рекурсивно извлеакает из него все именные словосочетания, сначала он фильтрует дочерние 							   // элементы и выбирает только те, у которых тип равен "NP".
+	 		val nounPhrases = parse.getChildren.filter(_.getType == "NP").map(_.getCoveredText).toList
+	   		val childNounPhrases = parse.getChildren.flatMap(getNounPhrases).toList
+	     		nounPhrases ++ childNounPhrases
+	       		}
+		 // Результаом операции является коллекция строк представляющая фразы существительные. Сначала фильтруем дочерние элементы и добавляем покрываемый текст, то етсь текст охваченный синтаксическим анализом в список. 
+		
+	  	def main(args:Array[String]):Unit = { // В этом методе мы перебираем результаты синтаксического анализа и выводим. 
+	   		val parserModel = new ParserModel(new FileInputStream("en-parser-chunking.bin"))
+	     		val parser = ParserFactory.create(parserModel)
+	       		val sentence = "The quick brown fox jumps over the lazy dog."
+		 	val topParses = ParserTool.parserLine(sentence, parser 1)
+	   		for (parse < topParses) {
+	     			val nounPhrases = getNounPhrases(parse)
+				println(nounPhrases.mkString(","))
+	   		}
+	     	}
+	}
+	// The quick brown fox jumps over the lazy dog.,  The quick brown fox jumps, the lazy dog.
+
+ ### Аналитические вычисления в Scala
+
+Можно использовать следующие библиотеки:
+
+ * Breeze
+ * Spire
+ * Apache Commons Math
+
+ Бибилиотеки предоставляют широкий набор математических функций и операции для аналитических расчетов.  
+
+#### Пример для задачи линейного программирования
+
+	import org.apache.commons.math3.optim.linear._
+	import org.apache.commons.math3.optim.linear.LinearConstraint
+	import java.util.ArrayList
+	import org.apache.commons.math3.optim.linear.Relationship
+	import org.apache.commons.math3.optim.linear.PointValuePair
+	import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
+	
+	object Main23 {
+		def main(args:Array[String]):Unit = {
+	 		// create a constraint: 2x + 3y <= 4
+	   		val coeffs: Array[Double] = Array(2.0, 3.0)
+	     		val coeffs2: Array[Double] = Array(1.0, 3.0) // задаются для целевой ф-ии
+	       		val coeffs3: Array[Double] = Array(1.0, 2.0)
+		 	val relationship: Relationship = Relationship.LEQ // задаёт отношения
+	   		val value: Double = 4.0
+	     		val coeffs1: Array[Double] = Array(-1.0, 3.0)
+		 	val relationship2: Relationship = Relationship.GEQ
+	   		val relationship3: Relationship = Relationship.LEQ
+	        	val value2: Double = 1.0
+		        val value3: Double = 4.0
+		 	val objectiveFunction = new LinearObjectiveFunction(coeffs2, 0.0) // 
+	     		val constraint: LinearConstraint = new LinearConstraint(coeffs, relationship, value)
+	       		val constraint2: LinearConstraint = new LinearConstraint(coeffs1, relationship2, value2)
+		 	val constraint3: LinearConstraint = new LinearConstraint(coeffs3, relationship3, value3)
+	
+			// Solve the optimization
+	  		val solver = new SimplexxSolver() // симплекс-метод
+	
+	      		val constraintsList2: java.util.List[LinearConstraint] = new ArrayList[LinearConstraint]()
+			constraintsList2.add(onstraint)
+	  		constraintsList2.add(onstraint2)
+	    		constraintsList2.add(onstraint3)
+	      		val result: PointValuePair = solver.optimize(objectiveFunction, new LinearConstraintSet(constraintsList2), GoalType.MINIMIZE)  // указывается целевая функция, 																		      //линейные ограничения, тип целевой 																	     // функции - направлена на минимум
+	 		// Print the solution
+	   		println(s"Minimum value: ${result.getValue}") // это результат целевой функции, в итоге выводит это в точке оптимума
+	     		println(s"Solution: ${result.getPoint.mkString(",")}") // значения переменных в точке оптимума
+	       		println("good")
+		 	}
+	   }
+	
+	   // Компилятор вызываем так: 
+	   // C:\Users\scotn\AppData\Local\Coursier\data\bin>scala-cp commons-math3-3-2.jar lab34.scala
+
+Целевая функция имеет вид: 1x + 3y -> min. Ограничения: 2x + 3y <= 4, -x + 3y >= 1, x + 2y >= 4.
+
+  
