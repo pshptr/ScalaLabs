@@ -1514,37 +1514,41 @@ Natural Language Processing (NLP) - это область компьютернн
 
 #### Пример кода opennlp
 
-	import java.sql.{Connection, DriverManager, ResultSet}
+	//import java.sq;.{Connection, DriverManager, ResultSet}
 	import java.io.FileInputStream
 	import opennlp.tools.namefind.{NameFinderME, TokenNameFinderModel}
-	import opennlp.tools.tokenize.{Tokenizer, TokenizerME, TokenizerModel}
+	import opennlp.tools.tokenize.*
 	import opennlp.tools.util.Span
-	import opennlp.tools.parser.ParserFactory
-	import opennlp.tools.parser.ParserModel
-	import opennlp.tools.parser.Parse
-	import opennlp.tools.cmdline..parser.ParserTool
-	import scala.collection.JavaConverters._
 	
 	object Main25 {
-		def getNounPhrases(parse: Parse): List[String] = { // Принимает обьект parser и рекурсивно извлеакает из него все именные словосочетания, сначала он фильтрует дочерние 							   // элементы и выбирает только те, у которых тип равен "NP".
-	 		val nounPhrases = parse.getChildren.filter(_.getType == "NP").map(_.getCoveredText).toList
-	   		val childNounPhrases = parse.getChildren.flatMap(getNounPhrases).toList
-	     		nounPhrases ++ childNounPhrases
-	       		}
-		 // Результаом операции является коллекция строк представляющая фразы существительные. Сначала фильтруем дочерние элементы и добавляем покрываемый текст, то етсь текст охваченный синтаксическим анализом в список. 
-		
-	  	def main(args:Array[String]):Unit = { // В этом методе мы перебираем результаты синтаксического анализа и выводим. 
-	   		val parserModel = new ParserModel(new FileInputStream("en-parser-chunking.bin"))
-	     		val parser = ParserFactory.create(parserModel)
-	       		val sentence = "The quick brown fox jumps over the lazy dog."
-		 	val topParses = ParserTool.parserLine(sentence, parser 1)
-	   		for (parse < topParses) {
-	     			val nounPhrases = getNounPhrases(parse)
-				println(nounPhrases.mkString(","))
-	   		}
-	     	}
+	    def main(args:Array[String]): Unit = {
+	        val tokenizerModelIn = new FileInputStream("en-token.bin")
+	        val tokenizerModel = new opennlp.tools.tokenize.TokenizerModel(tokenizerModelIn)
+	        val tokenizer = new opennlp.tools.tokenize.TokenizerME(tokenizerModel)
+	        // Load NER model
+	        val nerModelIn = new FileInputStream("en-ner-person.bin")
+	        val nerModel = new TokenNameFinderModel(nerModelIn)
+	        val ner = new NameFinderME(nerModel)
+	
+	  		// Define some sample text
+	        val text = "John Smith is a software engineer at Google."
+	
+	        // Tokenize the text
+	        val tokens = tokenizer.tokenize(text)
+	
+	  		// Find the named entities in the text
+	        val spans = ner.find(tokens)
+	
+	        // Print the named entities and their types
+	        for(span <- spans) 
+	        {
+	            val entityType = span.getType
+	            val entity = tokens.slice(span.getStart, span.getEnd).mkString("")
+	            println(s"$entityType: $entity")
+	        }
+	    }
 	}
-	// The quick brown fox jumps over the lazy dog.,  The quick brown fox jumps, the lazy dog.
+		// The quick brown fox jumps over the lazy dog.,  The quick brown fox jumps, the lazy dog.
 
  ### Аналитические вычисления в Scala
 
