@@ -7,7 +7,7 @@
 
  ## Конспект лекций:
 
- #### (если берёте конспект, то не забывайте пожалуйста ставить звёздочки)
+ #### (если берёте конспект, то не забывайте пожалуйста ставить звёздочки ⭐)
 
 * [lecture 1](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%201.md)
 * [lecture 2](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%202.md)
