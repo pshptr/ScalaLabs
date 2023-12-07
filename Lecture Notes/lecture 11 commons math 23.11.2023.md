@@ -14,6 +14,7 @@
 * An idea worth exploring
 
 #### Пример кода opennlp
+  ```scala
 
 	//import java.sq;.{Connection, DriverManager, ResultSet}
 	import java.io.FileInputStream
@@ -51,6 +52,8 @@
 	}
 		// The quick brown fox jumps over the lazy dog.,  The quick brown fox jumps, the lazy dog.
 
+  ```
+
  ### Аналитические вычисления в Scala
 
 Можно использовать следующие библиотеки:
@@ -62,6 +65,7 @@
  Бибилиотеки предоставляют широкий набор математических функций и операции для аналитических расчетов.  
 
 #### Пример для задачи линейного программирования
+  ```scala
 
 	import org.apache.commons.math3.optim.linear._
 	import org.apache.commons.math3.optim.linear.LinearConstraint
@@ -102,5 +106,6 @@
 			println("good")
 		}
 	}
+  ```
 
 Целевая функция имеет вид: 1x + 3y -> min. Ограничения: 2x + 3y <= 4, -x + 3y >= 1, x + 2y >= 4.
