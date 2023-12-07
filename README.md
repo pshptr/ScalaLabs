@@ -5,6 +5,23 @@
  ---
  ### [Лабораторная работа 1. Создание простых S-проектов на основе классов](https://github.com/pshptr/ScalaLabs/blob/master/src/main/scala/Lab1.scala)
 
+ ---
+
+ ## Конспект лекций:
+
+* [lecture 1](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%201.md)
+* [lecture 2](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%202.md)
+* [lecture 3 zip](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%203%20zip.md)
+* [lecture 4 string](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%204%20string.md)
+* [lecture 5 lazy val](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%205%20lazy%20val.md)
+* [lecture 6 string builder](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%206%20string%20builder.md)
+* [lecture 7 regular expressions](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%207%20regular%20expressions.md)
+* [lecture 8 02.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%208%2002.11.2023.md)
+* [lecture 9 09.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%209%2009.11.2023.md)
+* [lecture 10 nlp 16.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2010%20nlp%2016.11.2023.md)
+* [lecture 11 commons math 23.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2011%20commons%20math%2023.11.2023.md)
+* [lecture 12 07.12.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2012%2007.12.2023.md)
+
 #### Вариант 1. 
  Построить генератор случайных чисел по следующей схеме. Вводите 10-значное число  с клавиатуры. Формируете два новых целых числа A и B: 
  первое  A состоит из первых пяти цифр, второе B  – из последних  цифр введенного числа, начиная с шестой.    
