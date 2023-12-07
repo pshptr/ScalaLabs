@@ -18,8 +18,8 @@
 * [lecture 7 regular expressions](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%207%20regular%20expressions.md)
 * [lecture 8 02.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%208%2002.11.2023.md)
 * [lecture 9 09.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%209%2009.11.2023.md)
-* [lecture 10 nlp 16.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2010%20nlp%2016.11.2023.md)
-* [lecture 11 commons math 23.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2011%20commons%20math%2023.11.2023.md)
+* [lecture 10 analytics 16.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2010%20nlp%2016.11.2023.md)
+* [lecture 11 nlp 23.11.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2011%20commons%20math%2023.11.2023.md)
 * [lecture 12 07.12.2023](https://github.com/pshptr/ScalaLabs/blob/master/Lecture%20Notes/lecture%2012%2007.12.2023.md)
 
 ---
