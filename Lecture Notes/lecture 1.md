@@ -21,6 +21,7 @@
 
 пример 1:
 
+ ```scala
 	object Main22{
 	
 	val f:(Int=>Int) = {
