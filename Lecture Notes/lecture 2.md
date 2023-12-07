@@ -4,6 +4,8 @@
 
 Пример взаимодействия класов внутри модуля
 
+ ```scala
+
     object MyModule {
       class MyClassA(val name: String){
         def greet(): Unit = println(s"Hello from $name!")
@@ -104,6 +106,7 @@
         super.finalize()
       }
     }
+
     
     object Main {
       def main(args: Array[String]): Unit = {
