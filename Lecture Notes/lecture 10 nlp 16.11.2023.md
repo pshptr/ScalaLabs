@@ -7,16 +7,22 @@
 
 * Функция top() возвращает указанное количество наибольших элементов из RDD в порядке убывания. Если указано значение n, то будет возвращено n наибольших элементов.
 
+ ```scala
+
 		val listRDD = sc.parallelize(List(1, 2, 3, 4, 5, 3, 2))
 		val topElements = listRDD.top(3)
 		// Output
 		topElements:Array[Int] = Array(5, 4, 3)
+  ```
 
 * Функция take() возвращает указанное количество наибольших элементов из RDD в порядке, в котором они расположены в исходном наборе данных. Если указано значение n, то будет возвращено не более n элементов. Например:
+
+ ```scala
 
 		val takenElements = listRDD.take(3)
 		// Output
 		takenElements:Array[Int] = Array(1, 2, 3)
+  ```
 
 * union(otherRDD) - возвращает новый RDD, содержащий элементы как из RDD, так и из otherRDD.
 * subtract(otherRDD) - возвращает новый RDD, который содержит элементы в RDD, но не в otherRDD.
@@ -25,6 +31,7 @@
 * flatMap(func) - применяет функцию func к каждому элементу RDD и возвращает сглаженный RDD с результирующими элементами. Возвращенный набор данных вернет больше строк, чем текущий.
 
 #### Пример:
+  ```scala
 
 	val listRDD = sc.paralelize(List(1, 2, 3, 4, 5, 3, 2))
 	val listRDD2 = sc.paralelize(List(1, 2, 6, 8, 5, 10, 2))
@@ -38,9 +45,11 @@ val wordsRDD = rdd.flatMap(line => line.split(" "))
 println("wordsRDD: " + wordsRDD.collect().mkString(","))
 // Output
 wordsRDD: Hello, Wolrd, Spark, is, awesome
+  ```
 
 
 #### Пример чтения и запси в файл:
+  ```scala
 
 	import scala.io.Source
 	import java.io.PrintWriter
@@ -60,6 +69,7 @@ wordsRDD: Hello, Wolrd, Spark, is, awesome
 	      		writer.write("Hello, world!\n")
 	       		writer.write("This is an example of writing to file")
 		 	}
+  ```
 
 
 ### Scala приложения для обработки текста
@@ -87,6 +97,7 @@ Natural Language Processing (NLP) - это область компьютернн
   * TokenizerModel.class
  
 #### Пример выполнения именованного распознавания сущностей в тексте на английском языке:
+  ```scala
 
 	import java.sq;.{Connection, DriverManager, ResultSet}
 	import java.io.FileInputStream
@@ -98,7 +109,7 @@ Natural Language Processing (NLP) - это область компьютернн
 		def main(args:Array[String]):Unit = {
 	 		// Load tokenizer model
 	   		val tokenizerModelIn = new FileInputStream("en-token.bin")
-			val tokenizerModel = new 						   opennlp.tools.tokenize.TokenizerModel(tokenizerModelIn)
+			val tokenizerModel = new opennlp.tools.tokenize.TokenizerModel(tokenizerModelIn)
 	  		val tokenizer = new new opennlp.tools.tokenize.TokenizerME(tokenizerModel)
 	    		// Load NER model
 	      		val nerModelIn = new FileInputStream("en-ner-person.bin")
@@ -121,3 +132,4 @@ Natural Language Processing (NLP) - это область компьютернн
 	   		}
 	     	   }
 	      }
+  ```
